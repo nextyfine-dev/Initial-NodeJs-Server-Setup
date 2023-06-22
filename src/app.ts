@@ -36,7 +36,7 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
-app.get("/", (_, res) => sendSuccessRes(res, "Welcome to E-Commerce API"));
+app.get("/", (_, res) => sendSuccessRes(res, "Welcome to NodeJS Server"));
 
 app.get("/robots.txt", (req, res) => {
   res.type("text/plain");
