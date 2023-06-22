@@ -18,8 +18,8 @@ import logger from "../logs/logger.js";
 
 export const sendSuccessRes = (
   res: Response,
-  message: String,
-  data?: undefined | any,
+  message: string,
+  data?: any,
   statusCode: StatusCodes = StatusCodes.OK
 ) =>
   res.status(statusCode).json({
