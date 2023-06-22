@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "next-chat-server",
   "version": "1.0.0",
   "main": "dist/server.js",
   "type": "module",
@@ -57,7 +57,7 @@
   "description": "This GitHub repository provides an initial setup for a Node.js server. It serves as a foundation for building web applications and APIs using Node.js, Express, and TypeScript. The setup includes essential libraries and configurations for handling HTTP requests, logging, error handling, and more..",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nextyfine-dev/Initial-NodeJs-Server-Setup.git"
+    "url": "git+https://github.com/nextyfine-dev/Next-Chat-Server.git.git"
   },
   "keywords": [
     "nodejs",
@@ -67,7 +67,7 @@
   ],
   "author": "Nextyfine",
   "bugs": {
-    "url": "https://github.com/nextyfine-dev/Initial-NodeJs-Server-Setup/issues"
+    "url": "https://github.com/nextyfine-dev/Next-Chat-Server.git/issues"
   },
-  "homepage": "https://github.com/nextyfine-dev/Initial-NodeJs-Server-Setup#readme"
+  "homepage": "https://github.com/nextyfine-dev/Next-Chat-Server.git#readme"
 }
