@@ -58,7 +58,7 @@ const errorController = (
   err: Err,
   req: Request,
   res: Response,
-  next: NextFunction
+  _: NextFunction
 ) => {
   if (err.body || err.query || err.params) {
     err.statusCode = 400;

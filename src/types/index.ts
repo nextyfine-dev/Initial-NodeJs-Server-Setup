@@ -1,7 +1,20 @@
-export interface NodeEnv {
+import { Dialect } from "sequelize";
+
+export type NodeEnv = {
   production: "production";
   development: "development";
-}
+};
+
+export type DbConfig = {
+  database: string;
+  username: string;
+  password: string;
+  options: {
+    host: string;
+    dialect: Dialect;
+    timezone: string;
+  };
+};
 
 export interface Err extends Error {
   code?: string | number;
@@ -15,4 +28,5 @@ export interface Err extends Error {
   body?: any;
   query?: any;
   params?: any;
+  err?: any;
 }

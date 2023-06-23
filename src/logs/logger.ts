@@ -5,7 +5,7 @@ import { __dirname, __fileName } from "../config/index.js";
 const options = {
   file: {
     level: "info",
-    filename: path.resolve(__dirname(__fileName()), "app.log"),
+    filename: path.resolve(__dirname(__fileName(import.meta.url)), "app.log"),
     handleExceptions: true,
     maxsize: 5242880, // 5MB
     maxFiles: 5,

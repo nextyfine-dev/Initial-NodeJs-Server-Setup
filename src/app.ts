@@ -12,6 +12,7 @@ import { sendSuccessRes } from "./services/serverService.js";
 import AppError from "./utils/AppError.js";
 import { StatusCodes } from "http-status-codes";
 import errorController from "./controllers/errorController.js";
+import router from "./routes/index.js";
 
 const app = express();
 
@@ -36,14 +37,16 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
-app.get("/", (_, res) => sendSuccessRes(res, "Welcome to E-Commerce API"));
+app.get("/", (_, res) => sendSuccessRes(res, "Welcome to Next-Chat API"));
 
-app.get("/robots.txt", (req, res) => {
+app.get("/robots.txt", (_, res) => {
   res.type("text/plain");
   res.send("User-agent: *\nDisallow: /");
 });
 
-app.all("*", (req, res, next) =>
+app.use("/api/v1", router);
+
+app.all("*", (req, _, next) =>
   next(
     new AppError(
       `Can't find ${req.originalUrl} on this server!`,

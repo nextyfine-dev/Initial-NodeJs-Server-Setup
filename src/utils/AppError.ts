@@ -8,10 +8,12 @@ class AppError implements Err {
   errName?: string;
   code?: string | number;
   name: string;
+  err?: any;
 
   constructor(
     message: string,
     statusCode: number,
+    err?: any,
     name?: string,
     code?: string | number
   ) {
@@ -23,6 +25,7 @@ class AppError implements Err {
     this.isOperational = true;
     this.name = name || "App Error";
     this.code = code;
+    this.err = err;
 
     Error.captureStackTrace(this, this.constructor);
   }
