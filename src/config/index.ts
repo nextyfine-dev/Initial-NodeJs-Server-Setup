@@ -37,3 +37,7 @@ export const dbConfig: DbConfig = {
 
 export const JWT_SECRET = process.env.JWT_SECRET;
 export const REFRESH_JWT_SECRET = process.env.REFRESH_JWT_SECRET;
+
+export const settings = {
+  usingWs: false,
+};

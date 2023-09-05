@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { JwtPayload } from "jsonwebtoken";
 import { StatusCodes } from "http-status-codes";
 import {
   createOrFindUser,
@@ -10,7 +11,7 @@ import {
 import { sendSuccessRes } from "../services/serverService.js";
 import AppError from "../utils/AppError.js";
 import catchAsync from "../utils/catchAsync.js";
-import { AuthUserDetails } from "../types/controllerTypes.js";
+import { AuthUserDetails, UserDetails } from "../types/controllerTypes.js";
 
 export const signUpOrSignIn = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -23,11 +24,7 @@ export const signUpOrSignIn = catchAsync(
         new AppError("Invalid username or password!", StatusCodes.BAD_REQUEST)
       );
 
-    const token = generateToken({
-      id: user.id,
-      userName: user.userName,
-      password: user.password,
-    });
+    const token = generateToken(user);
 
     const refreshToken = generateRefreshToken(user.id);
 
@@ -44,11 +41,36 @@ export const refreshTheToken = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const { refreshToken }: { refreshToken: string } = req.body;
 
-    const decoded = verifyToken(refreshToken, "refresh");
+    const decoded = verifyToken(refreshToken, "refresh") as JwtPayload;
 
     if (!decoded)
       return next(new AppError("Please login again!", StatusCodes.BAD_REQUEST));
 
-    console.log("decoded :>> ", decoded);
+    const user = await findUser(decoded.id);
+
+    if (!user)
+      return next(
+        new AppError(
+          "Invalid authentication! Please login again.",
+          StatusCodes.NON_AUTHORITATIVE_INFORMATION,
+          undefined,
+          "Authentication Error"
+        )
+      );
+
+    const userDetails: UserDetails = user.dataValues;
+
+    const token = generateToken(userDetails);
+
+    const newRefreshToken = generateRefreshToken(userDetails.id);
+
+    return sendSuccessRes(res, "LoggedIn Successfully!!", {
+      token,
+      refreshToken: newRefreshToken,
+    });
   }
+);
+
+export const loginWithToken = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {}
 );

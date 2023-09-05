@@ -6,7 +6,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import compression from "compression";
 import { nodeEnv } from "./config/constants.js";
-import { NODE_ENV } from "./config/index.js";
+import { NODE_ENV, settings } from "./config/index.js";
 import { LoggerStream } from "./logs/logger.js";
 import { sendSuccessRes } from "./services/serverService.js";
 import AppError from "./utils/AppError.js";
@@ -16,7 +16,7 @@ import router from "./routes/index.js";
 
 const app = express();
 
-const httpServer = http.createServer(app);
+const httpServer = settings.usingWs ? http.createServer(app) : app;
 
 app.use(cors());
 app.use(helmet());
@@ -37,7 +37,7 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
-app.get("/", (_, res) => sendSuccessRes(res, "Welcome to Next-Chat API"));
+app.get("/", (_, res) => sendSuccessRes(res, "Welcome to the Server"));
 
 app.get("/robots.txt", (_, res) => {
   res.type("text/plain");

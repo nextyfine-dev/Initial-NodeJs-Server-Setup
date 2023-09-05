@@ -1,5 +1,5 @@
 {
-  "name": "next-chat-server",
+  "name": "server",
   "version": "1.0.0",
   "main": "dist/server.js",
   "type": "module",
@@ -7,8 +7,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "nodemon dist/server.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon dist/server.js\"",
-    "test": "concurrently \"npx tsc --watch\" \"nodemon dist/test/app.js\""
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon dist/server.js\""
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",

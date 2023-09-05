@@ -1,49 +1,92 @@
 # Initial Node.js Server Setup
 
-This repository provides an initial setup for a Node.js server, serving as a foundation for developing web applications and APIs using Node.js, Express, and TypeScript. It includes essential configurations, middleware, and error handling to help you kickstart your project quickly.
+![Node.js](https://img.shields.io/badge/Node.js-%3E%3D%2016-brightgreen)
+
+This repository provides a robust foundation for quickly setting up a Node.js server, ideal for developing web applications and APIs. It includes essential configurations, middleware, and error handling to streamline your project's development.
 
 ## Features
 
-- **Express Framework**: The server is built on the Express framework, which offers a fast and minimalist approach to building web applications and APIs.
-- **Middleware Stack**: The setup includes commonly used middleware components such as CORS, Helmet, Morgan, and Compression, enabling you to enhance security, logging, and performance effortlessly.
-- **Error Handling**: An error controller is implemented to handle and format errors, providing consistent and user-friendly error responses.
-- **TypeScript Support**: The server setup is written in TypeScript, allowing for static type checking and improved code maintainability.
-- **Development Environment**: The setup includes tools like Nodemon and TypeScript compiler, enabling automatic restarts and real-time TypeScript transpilation for a smooth development experience.
+- **Express Framework**: Built on the Express framework, known for its speed and simplicity in creating web applications and APIs.
+- **Middleware Stack**: Includes essential middleware components like CORS, Helmet, Morgan, and Compression, enhancing security, logging, and performance.
+- **Error Handling**: Implements an error controller for consistent and user-friendly error responses.
+- **TypeScript Support**: Developed in TypeScript, enabling static type checking and code maintainability.
+- **Development Environment**: Equipped with Nodemon and TypeScript compiler for automatic restarts and real-time TypeScript transpilation during development.
+- **Socket.io Support**: Integrates Socket.io for real-time communication, enabling interactive features.
+- **Functional Programming**: Embraces functional programming principles for clean and maintainable code.
+- **MySQL Database**: Connect to MySQL databases using Sequelize ORM for efficient data management.
 
-## Installation and Usage
+## Getting Started
 
-1. Clone the repository to your local machine:
+Follow these steps to start using the Node.js server setup:
 
-   ```bash
-   git clone https://github.com/your-username/initial-nodejs-server-setup.git
-   ```
+### 1. Clone the Repository
 
-2. Install the dependencies using either npm or yarn:
+Clone this repository to your local machine:
 
-   ```bash
-   # Using npm
-   npm install
+```bash
+git clone https://github.com/your-username/initial-nodejs-server-setup.git
+```
 
-   # Using yarn
-   yarn install
-   ```
+### 2. Install Dependencies
 
-3. Start the server in development mode:
+Navigate to the project directory and install dependencies using either npm or yarn:
 
-   ```bash
-   yarn run dev
-   ```
+```bash
+# Using npm
+npm install
 
-   This command will start the server using Nodemon, which automatically restarts the server whenever changes are detected. You can access the server at `http://localhost:3030`.
+# Using yarn
+yarn install
+```
 
-## Contributing
+Certainly, I've added a new step to the README to run the build before starting the server for the first time:
 
-Contributions are welcome! If you have any improvements, bug fixes, or new features to add, feel free to submit a pull request. Please ensure that your code follows the established coding style and that thorough testing has been conducted.
+### 3. Run the Build
 
-## License
+Before launching the server for the first time, you need to build the project. This step compiles TypeScript code into JavaScript, preparing it for execution.
 
-This project is licensed under the [MIT License](https://github.com/nextyfine-dev/Initial-NodeJs-Server-Setup/blob/master/LICENSE). Feel free to use and modify the code as per your needs.
+```bash
+yarn run build
+```
+
+After building the project, proceed with starting the server:
+
+### 4. Start the Server
+
+Launch the server in development mode:
+
+```bash
+yarn run dev
+```
+
+The server will automatically restart when code changes are detected, making development smooth and efficient. Access the server at `http://localhost:3030`.
+
+## TypeScript Folder Structure
+
+The project adheres to a well-organized TypeScript folder structure for better code management:
+
+- **config**: Contains configurations, environment variables, and database setup.
+- **controllers**: Includes the error controller.
+- **logs**: Houses the logger configuration.
+- **middlewares**: Holds custom middleware functions.
+- **model**: Defines data models.
+- **routes**: Manages route definitions.
+- **services**: Houses server-related services.
+- **test**: Reserved for testing scripts.
+- **types**: Contains custom type definitions.
+- **utils**: Includes utility functions.
+- **app.ts**: Entry point for the application.
+- **server.ts**: Defines the server setup.
+- **ws.ts**: Manages WebSocket configuration.
 
 ---
 
-By using this initial server setup, you can jump start your Node.js development, saving time and effort in setting up the basic structure and configurations. Start building your Node.js applications and APIs with confidence, knowing that you have a solid foundation to work with. Happy coding!
+By utilizing this initial server setup, you can accelerate your Node.js development, saving time and effort in setting up the fundamental structure and configurations. Begin building Node.js applications and APIs confidently, knowing that you have a solid foundation to build upon. Happy coding!
+
+## Contributing
+
+Contributions are welcome! If you have improvements, bug fixes, or new features to contribute, please submit a pull request. Ensure that your code adheres to the established coding style and undergoes thorough testing.
+
+## License
+
+This project is licensed under the [MIT License](https://github.com/nextyfine-dev/Initial-NodeJs-Server-Setup/blob/master/LICENSE), granting you the freedom to use and modify the code to suit your requirements.

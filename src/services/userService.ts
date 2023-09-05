@@ -42,7 +42,7 @@ export const verifyToken = (
 ) => {
   const secret =
     tokenType === "normal"
-      ? JWT_SECRET && details && JWT_SECRET + details.password
+      ? JWT_SECRET && details && JWT_SECRET + details.id
       : REFRESH_JWT_SECRET && REFRESH_JWT_SECRET;
 
   if (!secret) return null;
@@ -52,9 +52,18 @@ export const verifyToken = (
 
 export const generateToken = (details: AuthUserDetails) =>
   JWT_SECRET &&
-  jwt.sign({ ...details, password: undefined }, JWT_SECRET + details.password, {
-    expiresIn: "1d",
-  });
+  jwt.sign(
+    {
+      ...details,
+      password: undefined,
+      createdAt: undefined,
+      updatedAt: undefined,
+    },
+    JWT_SECRET + details.id,
+    {
+      expiresIn: "1d",
+    }
+  );
 
 export const generateRefreshToken = (id: string) =>
   REFRESH_JWT_SECRET &&
