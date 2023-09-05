@@ -15,7 +15,7 @@ if (fs.existsSync(envPath)) {
   dotenv.config({ path: envPath });
 } else {
   throw new Error(
-    "Configuration file not found. Please configure the necessary files."
+    "Configuration file not found. Please configure the necessary files. Please add '.env' file inside the 'dist/config' folder!"
   );
 }
 

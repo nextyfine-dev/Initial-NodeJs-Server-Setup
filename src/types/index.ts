@@ -30,3 +30,6 @@ export interface Err extends Error {
   params?: any;
   err?: any;
 }
+
+export type ValidateReqType = "body" | "params" | "query";
+export type ValidateType = "single" | "multiple";
